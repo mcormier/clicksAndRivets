@@ -1,41 +1,4 @@
 
-// Classical Inheritance is Obsolete - How to Think in Prototypal OO
-// http://vimeo.com/69255635#
-//
-// Notes:
-// - Tight coupling and single-parent hierarchies make structures rigid and changes hard.
-// - Duplication by Necessity - Many slightly different versions of the class.
-//
-// - "The problem with object-oriented languages is they've got all this implicit
-//    environment that they carry around with them.  You wanted a banana, but what
-//    you got was a gorilla holding the banana and the entire jungle."
-//    ~ Joe Armstrong, "Coders at Work"
-
-// - "Program to an interface and not an implementation",
-// - "Favor object composition over class inheritance"   - Gang of Four
-//
-// - In javascript there is no class.
-// - A prototype is a working sample.
-
-// - Delegate prototype.
-
-var proto = {
-  hello: function hello() {
-    return 'Hello, my name is ' + this.name;
-  }
-
-};
-
-var george = Object.create(proto);
-george.name = 'George';
-
-// Cloning / Concatenation
-
-//var hanna = _.extend({}, proto, {name: 'George'});
-
-// Functional Inheritance
-
-
 // ------------------------------------------------------------------------------------
 // The clock can either be bound to html elements or not bound
 //
@@ -127,7 +90,7 @@ PPClock.prototype.currentValue = function() {
 }
 
 PPClock.prototype.updateClock = function() {
-   var seconds = this.currentValue;
+   var seconds = this.currentValue();
 
    this.displayElement.innerHTML = seconds;
 }
