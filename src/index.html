@@ -9,13 +9,7 @@
 
     // TODO -- Every Minute on the Minute
     // TODO -- countdown clock - with 10 second countdown start
-    // TODO -- Tabata
     // TODO -- 10 second startup delay
-
-    function playTest() {
-      var sound = new Audio('sound/short1.wav');
-      sound.play();
-    }
 
     var clock = new PPClock( "TimeDisplay", "buttonStart", "buttonStop" );
     var tabataClock = new PPTabataClock( "tabataDisplay", "tabataStart", "tabataStop" );
@@ -23,11 +17,7 @@
     var countDownClock = new PPClock("countDownDisplay", "countDownStart", "countDownStop");
     countDownClock.setCountDown(10);
 
-    function init() {
-      //PPUtils.bind("click", $("playSound"), playTest );
-    }
 
-    PPUtils.bind("load", window, init );
   </script>
 
 

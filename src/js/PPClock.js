@@ -98,6 +98,10 @@ PPClock.prototype.start = function () {
    this.running = true;
 }
 
+PPClock.prototype.reset = function () {
+
+}
+
 PPClock.prototype.stop = function () {
     if ( this.running ) {
         var that = this;
@@ -114,6 +118,7 @@ PPClock.prototype.currentValue = function() {
   var now = new Date();
   var mills = now - this.startTime;
   var seconds = Math.floor(mills / 1000);
+  
   if (  this.countDownClock ) {
     return this.countDownAmount - seconds;
   }
