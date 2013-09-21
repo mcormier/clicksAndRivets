@@ -58,9 +58,6 @@ PPClock.prototype.start = function () {
    this.running = true;
 }
 
-PPClock.prototype.reset = function () {
-
-}
 
 PPClock.prototype.stop = function () {
     if ( this.running ) {
