@@ -4,12 +4,17 @@ function PPEmotmClock (displayElementID, startButtonID, stopButtonID ) {
   this.startButtonID = startButtonID;
   this.stopButtonID = stopButtonID;
 
-  // TODO -- create and use a countdown clock
+  this.startClock = new PPClock();
+  this.startClock.setCountDown(10);
+
   this.workoutClock = new PPClock();
   
   this.sound = new Audio('sound/short1.wav');
 
-  var that = this;
+  var that = this;  
+  var startBinder = function () { that.startingDisplay(); }
+  this.startClock.runAction = startBinder;
+  
   var runBinder = function () { that.display(); }
   this.workoutClock.runAction = runBinder;
 
@@ -29,13 +34,25 @@ PPEmotmClock.prototype.init = function () {
 }
 
 PPEmotmClock.prototype.start = function () {
-   this.workoutClock.start();
+   this.startClock.start();
 }
 
 PPEmotmClock.prototype.stop = function () {
   this.workoutClock.stop();
 }
 
+
+PPEmotmClock.prototype.startingDisplay = function () {
+   var currValue = this.startClock.currentValue();
+   
+   this.displayElement.innerHTML = PPClock.format(currValue);
+   
+   if ( currValue == 0 ) {
+      //play start sound
+      this.sound.play();
+      this.workoutClock.start();
+   }
+}
 
 PPEmotmClock.prototype.display = function () {
   var currValue = this.workoutClock.currentValue();
