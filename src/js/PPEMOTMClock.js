@@ -9,9 +9,12 @@ function PPEmotmClock (displayElementID, startButtonID, stopButtonID ) {
 
   this.workoutClock = new PPClock();
   
+  this.currentClock = this.startClock;
+  
   this.sound = new Audio('sound/short1.wav');
 
-  var that = this;  
+  var that = this;
+  
   var startBinder = function () { that.startingDisplay(); }
   this.startClock.runAction = startBinder;
   
@@ -23,27 +26,20 @@ function PPEmotmClock (displayElementID, startButtonID, stopButtonID ) {
 }
 
 
-PPEmotmClock.prototype.init = function () {
-  this.displayElement = $(this.displayElementID);
+PPEmotmClock.prototype.init = PPClock.prototype.init;
 
-  var that = this;
-  var startBinder = function() {  that.start(); }
-  var stopBinder = function() {  that.stop(); }
-  PPUtils.bind("click", $(this.stopButtonID), stopBinder );
-  PPUtils.bind("click", $(this.startButtonID), startBinder );
-}
 
 PPEmotmClock.prototype.start = function () {
-   this.startClock.start();
+   this.currentClock.start();
 }
 
 PPEmotmClock.prototype.stop = function () {
-  this.workoutClock.stop();
+  this.currentClock.stop();
 }
 
 
 PPEmotmClock.prototype.startingDisplay = function () {
-   var currValue = this.startClock.currentValue();
+   var currValue = this.currentClock.currentValue();
    
    this.displayElement.innerHTML = PPClock.format(currValue);
    

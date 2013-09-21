@@ -36,15 +36,7 @@ function PPTabataClock(displayElementID, startButtonID, stopButtonID ) {
   PPUtils.bind("load", window, initBinder );
 }
 
-PPTabataClock.prototype.init = function () {
-  this.displayElement = $(this.displayElementID);
-
-  var that = this;
-  var startBinder = function() {  that.start(); }
-  var stopBinder = function() {  that.stop(); }
-  PPUtils.bind("click", $(this.stopButtonID), stopBinder );
-  PPUtils.bind("click", $(this.startButtonID), startBinder );
-}
+PPTabataClock.prototype.init = PPClock.prototype.init;
 
 PPTabataClock.prototype.start = function () {
    this.currentClock.start();
