@@ -98,16 +98,6 @@ PPClock.prototype.updateClock = function() {
    
 }
 
-PPClock.prototype.countDown = function() {
-
-   var toDisplay = this.currentValue();
-   this.displayElement.innerHTML = toDisplay;
-
-   if ( toDisplay == 0 ) {
-     this.stop();
-   }
-}
-
 
 // PPClock Static methods
 // ----------------------------------------------
