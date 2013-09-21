@@ -46,6 +46,8 @@ PPEmotmClock.prototype.startingDisplay = function () {
    if ( currValue == 0 ) {
       //play start sound
       this.sound.play();
+      this.currentClock.stop();
+      this.currentClock = this.workoutClock;
       this.workoutClock.start();
    }
 }
