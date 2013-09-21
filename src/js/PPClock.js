@@ -36,16 +36,13 @@ PPClock.prototype.init = function () {
     PPUtils.bind("click", $(this.stopButtonID), stopBinder );
 
     if ( this.countDownClock ) {
-      this.displayElement.innerHTML = this.countDownAmount;
+      this.displayElement.innerHTML = PPClock.format(this.countDownAmount);
     }
 }
 
 PPClock.prototype.setCountDown = function (amount) {
   this.countDownClock = true;
   this.countDownAmount = amount;
-  var that = this;
-  this.runAction = function() {  that.countDown(); }
-
 }
 
 PPClock.prototype.start = function () {
@@ -77,6 +74,7 @@ PPClock.prototype.stop = function () {
 
 }
 
+
 PPClock.prototype.currentValue = function() {
   var now = new Date();
   var mills = now - this.startTime;
@@ -92,14 +90,39 @@ PPClock.prototype.currentValue = function() {
 PPClock.prototype.updateClock = function() {
    var seconds = this.currentValue();
 
-   this.displayElement.innerHTML = seconds;
+   this.displayElement.innerHTML = PPClock.format(seconds);
+   
+   if ( this.countDownClock && seconds == 0 ) {
+     this.stop();
+   }
+   
 }
 
 PPClock.prototype.countDown = function() {
 
-   this.displayElement.innerHTML = this.currentValue;
+   var toDisplay = this.currentValue();
+   this.displayElement.innerHTML = toDisplay;
 
    if ( toDisplay == 0 ) {
      this.stop();
    }
+}
+
+
+// PPClock Static methods
+// ----------------------------------------------
+// Formats seconds t
+// 69 --> 1:09 
+PPClock.format = function (secondsValue) {
+  var minutes = Math.floor(secondsValue / 60);
+  var seconds = secondsValue % 60;
+  
+  if ( seconds < 10 && minutes > 0) {
+    seconds = "0" + seconds;
+  }
+  if ( minutes > 0 ) {
+    return minutes + ":" + seconds;
+  } else {
+    return seconds;
+  }
 }

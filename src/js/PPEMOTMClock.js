@@ -36,24 +36,10 @@ PPEmotmClock.prototype.stop = function () {
   this.workoutClock.stop();
 }
 
-PPEmotmClock.prototype.format = function (secondsValue) {
-  var minutes = Math.floor(secondsValue / 60);
-  var seconds = secondsValue % 60;
-  
-  if ( seconds < 10 && minutes > 0) {
-    seconds = "0" + seconds;
-  }
-  if ( minutes > 0 ) {
-    return minutes + ":" + seconds;
-  } else {
-    return seconds;
-  }
-}
-
 
 PPEmotmClock.prototype.display = function () {
   var currValue = this.workoutClock.currentValue();
-  var currStringValue = this.format(currValue);
+  var currStringValue = PPClock.format(currValue);
 
   if ( currValue % 60 == 0 ) {
     this.sound.play();

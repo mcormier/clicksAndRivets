@@ -12,10 +12,15 @@
     // TODO -- 10 second startup delay
 
     var clock = new PPClock( "TimeDisplay", "buttonStart", "buttonStop" );
-    var tabataClock = new PPTabataClock( "tabataDisplay", "tabataStart", "tabataStop" );
+    
+    // Tests that a clock can be constructed that is not bound to any HTML elements
     var clock2 = new PPClock();
+    
     var countDownClock = new PPClock("countDownDisplay", "countDownStart", "countDownStop");
-    countDownClock.setCountDown(10);
+    countDownClock.setCountDown(600);
+
+    var tabataClock = new PPTabataClock( "tabataDisplay", "tabataStart", "tabataStop" );
+
     var emotmClock = new PPEmotmClock("emotmDisplay", "emotmStart", "emotmStop");
 
 
