@@ -4,6 +4,7 @@
   <script src="js/PPUtils.js"></script>
   <script src="js/PPClock.js"></script>
   <script src="js/PPTabataClock.js"></script>
+  <script src="js/PPEMOTMClock.js"></script>
 
   <script>
 
@@ -16,6 +17,7 @@
     var clock2 = new PPClock();
     var countDownClock = new PPClock("countDownDisplay", "countDownStart", "countDownStop");
     countDownClock.setCountDown(10);
+    var emotmClock = new PPEmotmClock("emotmDisplay", "emotmStart", "emotmStop");
 
 
   </script>
@@ -27,15 +29,18 @@
      <input id="buttonStart" type="button" value="Start"/>
      <input id="buttonStop" type="button" value="Stop"/>
 
-     <!--<input id="playSound" type="button" value="Play"/>-->
-     <br><br>
-
-     Tabata clock <div id="tabataDisplay">&nbsp;</div>
-     <input id="tabataStart" type="button" value="Start"/>
-     <input id="tabataStop" type="button" value="Stop"/>
 
      <br><br>Count down clock <div id="countDownDisplay">&nbsp;</div>
      <input id="countDownStart" type="button" value="Start"/>
      <input id="countDownStop" type="button" value="Stop"/>
+     
+     <br><br>Tabata clock <div id="tabataDisplay">&nbsp;</div>
+     <input id="tabataStart" type="button" value="Start"/>
+     <input id="tabataStop" type="button" value="Stop"/>
+     
+     <br><br>EMOTM clock <div id="emotmDisplay">&nbsp;</div>
+     <input id="emotmStart" type="button" value="Start"/>
+     <input id="emotmStop" type="button" value="Stop"/>
+     
 </body>
 </html>
