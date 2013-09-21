@@ -43,8 +43,11 @@ PPEmotmClock.prototype.format = function (secondsValue) {
   if ( seconds < 10 && minutes > 0) {
     seconds = "0" + seconds;
   }
-  
-  return minutes + ":" + seconds;
+  if ( minutes > 0 ) {
+    return minutes + ":" + seconds;
+  } else {
+    return seconds;
+  }
 }
 
 
