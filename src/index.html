@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="js/PPUtils.js"></script>
+  <script src="js/PPClock.js"></script>
+  <script src="js/PPTabataClock.js"></script>
+
+  <script>
+
+    // TODO -- Every Minute on the Minute
+    // TODO -- countdown clock - with 10 second countdown start
+    // TODO -- Tabata
+    // TODO -- 10 second startup delay
+
+    function playTest() {
+      var sound = new Audio('sound/short1.wav');
+      sound.play();
+    }
+
+    var clock = new PPClock( "TimeDisplay", "buttonStart", "buttonStop" );
+    var tabataClock = new PPTabataClock( "tabataDisplay", "tabataStart", "tabataStop" );
+    var clock2 = new PPClock();
+    var countDownClock = new PPClock("countDownDisplay", "countDownStart", "countDownStop");
+    countDownClock.setCountDown(10);
+
+    function init() {
+      //PPUtils.bind("click", $("playSound"), playTest );
+    }
+
+    PPUtils.bind("load", window, init );
+  </script>
+
+
+</head>
+<body>
+     Count up clock <div id="TimeDisplay">&nbsp;</div>
+     <input id="buttonStart" type="button" value="Start"/>
+     <input id="buttonStop" type="button" value="Stop"/>
+
+     <!--<input id="playSound" type="button" value="Play"/>-->
+     <br><br>
+
+     Tabata clock <div id="tabataDisplay">&nbsp;</div>
+     <input id="tabataStart" type="button" value="Start"/>
+     <input id="tabataStop" type="button" value="Stop"/>
+
+     <br><br>Count down clock <div id="countDownDisplay">&nbsp;</div>
+     <input id="countDownStart" type="button" value="Start"/>
+     <input id="countDownStop" type="button" value="Stop"/>
+</body>
+</html>
