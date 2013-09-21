@@ -37,20 +37,6 @@ PPUtils.setElementAttributes = function ( element, attributeArray, valuesArray) 
    }
 }
 
-// References:
-//   http://krasimirtsonev.com/blog/article/object-oriented-programming-oop-in-javascript-extending-Inheritance-classes
-//   http://peter.michaux.ca/articles/class-based-inheritance-in-javascript
-PPUtils.extend = function (subclass, superclass) {
-    function Dummy() {}
-    Dummy.prototype = superclass.prototype;
-    subclass.prototype = new Dummy();
-    subclass.prototype.constructor = subclass;
-    subclass.superclass = superclass;
-    subclass.superproto = superclass.prototype;
-    subclass.prototype.superclass = superclass.constructor;
-}
-
-
 // Returns the callback so that it can be removed later
 PPUtils.bindTextField = function(event, element, boundObj, objCallback) {
 
