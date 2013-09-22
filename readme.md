@@ -10,4 +10,6 @@ I was not impressed with the free javascript workout timers that I found online 
 - http://www.speedbagforum.com/timer.html
 - http://www.beach-fitness.com/tabata/
 - http://www.elated.com/articles/creating-a-javascript-clock/
+- https://itunes.apple.com/us/app/tabata-timer/id311712265?mt=8
+- http://tabatatraining.org/
 

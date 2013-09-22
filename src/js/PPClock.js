@@ -45,6 +45,11 @@ PPClock.prototype.setCountDown = function (amount) {
   this.countDownAmount = amount;
 }
 
+
+PPClock.prototype.setTimeLimit = function (timeLimit) {
+  PPUtils.log("TODO - implement");
+}
+
 PPClock.prototype.start = function () {
    if ( this.running ) {
       PPUtils.log("Can't start, already running");

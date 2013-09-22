@@ -2,11 +2,16 @@
 <html>
 <head>
   <script src="js/PPUtils.js"></script>
+  <script src="js/PPTimerBinder.js"></script>
   <script src="js/PPClock.js"></script>
   <script src="js/PPTabataClock.js"></script>
   <script src="js/PPEMOTMClock.js"></script>
-
+  <script src="js/PPCompositeTimer.js"></script>
+  
   <script>
+
+    // TODO -- rename from clock to timer's these are timer's not clocks...
+    // TODO -- maybe a binder object for binding stuff. TimerBinder
 
     // TODO -- countdown clock - with 10 second countdown start
     // TODO -- 10 second startup delay
@@ -24,6 +29,15 @@
     var emotmClock = new PPEmotmClock("emotmDisplay", "emotmStart", "emotmStop");
 
 
+    // Create a 10 minute workout with a 10 second count down start
+    var countDown = new PPClock();
+    countDownClock.setCountDown(10);
+    var countUp = new PPClock();
+    countUp.setTimeLimit(600);
+    var countUpWith10SecCountdown = new PPCompositeTimer(countDown, null);
+ 
+    var timerBinder = new PPTimerBinder("countUp");
+ 
   </script>
 
 
@@ -46,6 +60,10 @@
      <br><br>EMOTM (Beeps every minute on the minute) clock <div id="emotmDisplay">&nbsp;</div>
      <input id="emotmStart" type="button" value="Start"/>
      <input id="emotmStop" type="button" value="Stop"/>
+     
+     <br><br>Count up clock with 10 second countdown start<div id="countUpDisplay">&nbsp;</div>
+     <input id="countUpStart" type="button" value="Start"/>
+     <input id="countUpStop" type="button" value="Stop"/>
      
 </body>
 </html>

@@ -1,10 +1,11 @@
-/* http://tabatatraining.org/
-   https://itunes.apple.com/us/app/tabata-timer/id311712265?mt=8
-
+/*    
+  Default Settings:
+  ----------------------------------  
   startup delay = 10 seconds
   Total cycles = 8
   Duration = 20 seconds
   Rest = 10 seconds 
+
 */
 
 
@@ -21,7 +22,7 @@ function PPTabataClock(displayElementID, startButtonID, stopButtonID ) {
 
   this.currentClock = this.workoutClock;
 
-  this.rounds = 8;
+  this.setNumberOfRounds(8);
   this.currentRound = 1;
 
   var that = this;
@@ -44,6 +45,10 @@ PPTabataClock.prototype.start = function () {
 
 PPTabataClock.prototype.stop = function () {
   this.currentClock.stop();
+}
+
+PPTabataClock.prototype.setNumberOfRounds = function (rounds) {
+  this.rounds = rounds;
 }
 
 PPTabataClock.prototype.swapClocks = function () {    
