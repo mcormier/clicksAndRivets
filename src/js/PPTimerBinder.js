@@ -33,12 +33,16 @@ PPTimerBinder.prototype.init = function () {
   this.isBound = true;
 }
 
-PPTimerBinder.prototype.start = function () { 
-  this.delegate.start();
+PPTimerBinder.prototype.start = function () {
+  if ( this.delegate ) { 
+    this.delegate.start();
+  }
 }
 
 PPTimerBinder.prototype.stop = function () { 
-  this.delegate.stop();
+  if ( this.delegate ) {
+    this.delegate.stop();
+  }
 }
 
 PPTimerBinder.prototype.setDelegate = function (delegate) {
