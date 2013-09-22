@@ -29,6 +29,10 @@ PPClock.prototype.init = function () {
     }
 };
 
+PPClock.prototype.setDelegate = function(delegate) {
+  this.delegate = delegate;
+};
+
 PPClock.prototype.setDisplayElement = function (element) {
   this.displayElement = element;
 };
@@ -69,6 +73,11 @@ PPClock.prototype.stop = function () {
 
 };
 
+PPClock.prototype.done = function () {
+  this.stop();
+  if (this.delegate ) { this.delegate.done(this); }
+}
+
 
 PPClock.prototype.currentValue = function() {
   var now = new Date();
@@ -86,9 +95,9 @@ PPClock.prototype.updateClock = function() {
    var seconds = this.currentValue();
 
    this.displayElement.innerHTML = PPClock.format(seconds);
-   
+
    if ( this.countDownClock && seconds == 0 ) {
-     this.stop();
+     this.done();
    }
    
 };
