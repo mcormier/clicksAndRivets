@@ -10,7 +10,6 @@
 
 
 function PPTabataClock( idPrefix ) {
-
   this.workoutClock = new PPClock();
   this.workoutClock.setCountDown(20);
 
@@ -23,15 +22,14 @@ function PPTabataClock( idPrefix ) {
   this.currentRound = 1;
 
   var that = this;
-  var runBinder = function () { that.display(); }
+  var runBinder = function () { that.display(); };
   this.workoutClock.runAction = runBinder;
   this.restClock.runAction = runBinder;
 
   this.sound = new Audio('sound/short1.wav');
 
   var timerBinder = new PPTimerBinder(idPrefix);
-  timerBinder.setDelegate(this);
-  
+  timerBinder.setDelegate(this);  
 }
 
 // The power of prototyping … don't extend, just grab what you need.
@@ -40,15 +38,15 @@ PPTabataClock.prototype.setDisplayElement = PPClock.prototype.setDisplayElement;
 
 PPTabataClock.prototype.start = function () {
    this.currentClock.start();
-}
+};
 
 PPTabataClock.prototype.stop = function () {
   this.currentClock.stop();
-}
+};
 
 PPTabataClock.prototype.setNumberOfRounds = function (rounds) {
   this.rounds = rounds;
-}
+};
 
 PPTabataClock.prototype.swapClocks = function () {    
   this.sound.play();
@@ -64,7 +62,7 @@ PPTabataClock.prototype.swapClocks = function () {
   }
   
   this.currentClock.start();
-}
+};
 
 PPTabataClock.prototype.display = function () {
   var currValue = this.currentClock.currentValue();
@@ -78,4 +76,4 @@ PPTabataClock.prototype.display = function () {
   if ( this.currentRound > this.rounds ) {
     this.stop();
   }
-}
+};
