@@ -11,7 +11,7 @@ PPUtils.log = function ( output ) {
     if (window.console ) {
       console.log(output);
     }
-}
+};
 
 PPUtils.objectImplementsMethod = function ( obj, method ) {
 
@@ -20,7 +20,7 @@ PPUtils.objectImplementsMethod = function ( obj, method ) {
   }
 
   return true;
-}
+};
 
 PPUtils.objectImplementsMethods = function ( obj, methodArray ) {
   for (var i = 0; i < methodArray.length; i++) {
@@ -29,20 +29,20 @@ PPUtils.objectImplementsMethods = function ( obj, methodArray ) {
     }
   }
   return true;
-}
+};
 
 PPUtils.setElementAttributes = function ( element, attributeArray, valuesArray) {
    for( var i = 0; i < attributeArray.length; i ++ ) {
      element.setAttribute( attributeArray[i], valuesArray[i]);
    }
-}
+};
 
 // Returns the callback so that it can be removed later
 PPUtils.bindTextField = function(event, element, boundObj, objCallback) {
 
   var callback = function receive(evt) {
     boundObj[objCallback](element, evt);
-  }
+  };
 
   if ( typeof element.addEventListener != "undefined" ) {
     element.addEventListener(event, callback, false);
@@ -51,14 +51,14 @@ PPUtils.bindTextField = function(event, element, boundObj, objCallback) {
   }
 
   return callback;
-}
+};
 PPUtils.bind = function(event, element, callback) {
   if ( typeof element.addEventListener != "undefined" ) {
     element.addEventListener(event, callback, false);
   } else if ( typeof element.attachEvent != "undefined" ) { // Supports IE < 9
     element.attachEvent(event, callback);
   }
-}
+};
 
 
 PPUtils.notifyListeners = function (listenersArray, listenerMethod,value ) {
@@ -66,4 +66,4 @@ PPUtils.notifyListeners = function (listenersArray, listenerMethod,value ) {
     var obj = listenersArray[i];
     obj[listenerMethod](value);
   }
-}
+};
