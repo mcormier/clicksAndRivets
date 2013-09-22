@@ -10,12 +10,9 @@ function PPEmotmClock (idPrefix ) {
   this.sound = new Audio('sound/short1.wav');
 
   var that = this;
-  
-  var startBinder = function () { that.startingDisplay(); }
-  this.startClock.runAction = startBinder;
-  
-  var runBinder = function () { that.display(); }
-  this.workoutClock.runAction = runBinder;
+
+  this.startClock.runAction = function () { that.startingDisplay(); };
+  this.workoutClock.runAction = function () { that.display(); };
 
   var timerBinder = new PPTimerBinder(idPrefix);
   timerBinder.setDelegate(this);  
@@ -28,11 +25,11 @@ PPEmotmClock.prototype.setDisplayElement = PPClock.prototype.setDisplayElement;
 
 PPEmotmClock.prototype.start = function () {
    this.currentClock.start();
-}
+};
 
 PPEmotmClock.prototype.stop = function () {
   this.currentClock.stop();
-}
+};
 
 
 PPEmotmClock.prototype.startingDisplay = function () {
@@ -47,7 +44,7 @@ PPEmotmClock.prototype.startingDisplay = function () {
       this.currentClock = this.workoutClock;
       this.workoutClock.start();
    }
-}
+};
 
 PPEmotmClock.prototype.display = function () {
   var currValue = this.workoutClock.currentValue();
@@ -60,4 +57,4 @@ PPEmotmClock.prototype.display = function () {
   this.displayElement.innerHTML = currStringValue;
   
   
-}
+};
