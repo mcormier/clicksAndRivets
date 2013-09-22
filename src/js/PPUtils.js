@@ -14,12 +14,7 @@ PPUtils.log = function ( output ) {
 };
 
 PPUtils.objectImplementsMethod = function ( obj, method ) {
-
-  if (obj == null || !obj[method] || typeof obj[method] !== 'function') {
-    return false;
-  }
-
-  return true;
+  return !(obj == null || !obj[method] || typeof obj[method] !== 'function');
 };
 
 PPUtils.objectImplementsMethods = function ( obj, methodArray ) {
