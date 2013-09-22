@@ -2,10 +2,10 @@
 // ------------------------------------------------------------------------------------
 // The clock can either be bound to html elements or not bound
 //
-// new PPClock( "TimeDisplay", "buttonStart", "buttonStop" );
+// new PPClock( "idPrefix" );
 //
 // new PPClock();
-function PPClock(displayElementID, startButtonID, stopButtonID ) {
+function PPClock( idPrefix) {
 
   this.running = false;
   this.id = null;
@@ -14,30 +14,23 @@ function PPClock(displayElementID, startButtonID, stopButtonID ) {
   var that = this;
   this.runAction = function() {  that.updateClock(); }
 
-  if (displayElementID != undefined) {
-    this.displayElementID = displayElementID;
-    this.startButtonID = startButtonID;
-    this.stopButtonID = stopButtonID;
-
-    // bind to HTML elements after the page has been initialized.
-    var initBinder = function() { that.init(); }
-    PPUtils.bind("load", window, initBinder );
+  if (idPrefix != undefined) {
+  
+   // bind to HTML elements after the page has been initialized.
+   var timerBinder = new PPTimerBinder(idPrefix);
+   timerBinder.setDelegate(this);
   }
 
 }
 
 PPClock.prototype.init = function () {
-    this.displayElement = $(this.displayElementID);
-
-    var that = this;
-    var startBinder = function() {  that.start(); }
-    var stopBinder = function() {  that.stop(); }
-    PPUtils.bind("click", $(this.startButtonID), startBinder );
-    PPUtils.bind("click", $(this.stopButtonID), stopBinder );
-
     if ( this.countDownClock ) {
       this.displayElement.innerHTML = PPClock.format(this.countDownAmount);
     }
+}
+
+PPClock.prototype.setDisplayElement = function (element) {
+  this.displayElement = element;
 }
 
 PPClock.prototype.setCountDown = function (amount) {
@@ -47,7 +40,7 @@ PPClock.prototype.setCountDown = function (amount) {
 
 
 PPClock.prototype.setTimeLimit = function (timeLimit) {
-  PPUtils.log("TODO - implement");
+  PPUtils.log("TODO - implement setTimeLimit");
 }
 
 PPClock.prototype.start = function () {

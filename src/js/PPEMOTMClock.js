@@ -1,9 +1,5 @@
 // Stub for Every minute on the minute clock
-function PPEmotmClock (displayElementID, startButtonID, stopButtonID ) {
-  this.displayElementID = displayElementID;
-  this.startButtonID = startButtonID;
-  this.stopButtonID = stopButtonID;
-
+function PPEmotmClock (idPrefix ) {
   this.startClock = new PPClock();
   this.startClock.setCountDown(10);
 
@@ -21,12 +17,13 @@ function PPEmotmClock (displayElementID, startButtonID, stopButtonID ) {
   var runBinder = function () { that.display(); }
   this.workoutClock.runAction = runBinder;
 
-  var initBinder = function() { that.init(); }
-  PPUtils.bind("load", window, initBinder );
+  var timerBinder = new PPTimerBinder(idPrefix);
+  timerBinder.setDelegate(this);  
 }
 
 
 PPEmotmClock.prototype.init = PPClock.prototype.init;
+PPEmotmClock.prototype.setDisplayElement = PPClock.prototype.setDisplayElement;
 
 
 PPEmotmClock.prototype.start = function () {

@@ -16,22 +16,21 @@
     // TODO -- countdown clock - with 10 second countdown start
     // TODO -- 10 second startup delay
 
-    var clock = new PPClock( "TimeDisplay", "buttonStart", "buttonStop" );
+    var timer = new PPClock( "up" );
     
     // Tests that a clock can be constructed that is not bound to any HTML elements
-    var clock2 = new PPClock();
+    var timerEmptyConstructorTest = new PPClock();
     
-    var countDownClock = new PPClock("countDownDisplay", "countDownStart", "countDownStop");
+    var countDownClock = new PPClock("countDown");
     countDownClock.setCountDown(600);
 
-    var tabataClock = new PPTabataClock( "tabataDisplay", "tabataStart", "tabataStop" );
-
-    var emotmClock = new PPEmotmClock("emotmDisplay", "emotmStart", "emotmStop");
+    var tabataClock = new PPTabataClock( "tabata" );
+    var emotmClock = new PPEmotmClock("emotm");
 
 
     // Create a 10 minute workout with a 10 second count down start
     var countDown = new PPClock();
-    countDownClock.setCountDown(10);
+    countDown.setCountDown(10);
     var countUp = new PPClock();
     countUp.setTimeLimit(600);
     var countUpWith10SecCountdown = new PPCompositeTimer(countDown, null);
@@ -43,9 +42,9 @@
 
 </head>
 <body>
-     Count up clock <div id="TimeDisplay">&nbsp;</div>
-     <input id="buttonStart" type="button" value="Start"/>
-     <input id="buttonStop" type="button" value="Stop"/>
+     Count up clock <div id="upDisplay">&nbsp;</div>
+     <input id="upStart" type="button" value="Start"/>
+     <input id="upStop" type="button" value="Stop"/>
 
 
      <br><br>Count down clock <div id="countDownDisplay">&nbsp;</div>
@@ -61,7 +60,8 @@
      <input id="emotmStart" type="button" value="Start"/>
      <input id="emotmStop" type="button" value="Stop"/>
      
-     <br><br>Count up clock with 10 second countdown start<div id="countUpDisplay">&nbsp;</div>
+     <br><br>Count up clock with 10 second countdown start
+     <div id="countUpDisplay">&nbsp;</div>
      <input id="countUpStart" type="button" value="Start"/>
      <input id="countUpStop" type="button" value="Stop"/>
      

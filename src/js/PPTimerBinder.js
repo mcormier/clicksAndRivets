@@ -2,14 +2,16 @@
 // Binds to a display element, start and stop button
 // Expects 3 HTML elements to be defined as follows:
 //
-//   rootName + "Display"
-//   rootName + "Start"
-//   rootName + "Stop"
+//   idPrefix + "Display"
+//   idPrefix + "Start"
+//   idPrefix + "Stop"
 //
-function PPTimerBinder(rootName) {
-  this.displayElementID = rootName + "Display";
-  this.startButtonID = rootName + "Start";
-  this.stopButtonID = rootName + "Stop";
+function PPTimerBinder(idPrefix) {
+  this.displayElementID = idPrefix + "Display";
+  this.startButtonID = idPrefix + "Start";
+  this.stopButtonID = idPrefix + "Stop";
+  
+  this.isBound = false;
   
   var that = this;
   var initBinder = function() { that.init(); }
@@ -24,12 +26,24 @@ PPTimerBinder.prototype.init = function () {
   var stopBinder = function() {  that.stop(); }
   PPUtils.bind("click", $(this.startButtonID), startBinder );
   PPUtils.bind("click", $(this.stopButtonID), stopBinder );
+  
+  if ( this.delegate ) {
+    this.delegate.setDisplayElement(that.displayElement);
+  }
+  this.isBound = true;
 }
 
 PPTimerBinder.prototype.start = function () { 
-  PPUtils.log("TODO - PPTimerBinder implement start");
+  this.delegate.start();
 }
 
 PPTimerBinder.prototype.stop = function () { 
-  PPUtils.log("TODO - PPTimerBinder implement stop");
+  this.delegate.stop();
+}
+
+PPTimerBinder.prototype.setDelegate = function (delegate) {
+  this.delegate = delegate;
+  if ( this.isBound ) {
+    this.delegate.setDisplayElement(this.displayElement);
+  }
 }

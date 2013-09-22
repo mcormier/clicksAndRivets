@@ -9,10 +9,7 @@
 */
 
 
-function PPTabataClock(displayElementID, startButtonID, stopButtonID ) {
-  this.displayElementID = displayElementID;
-  this.startButtonID = startButtonID;
-  this.stopButtonID = stopButtonID;
+function PPTabataClock( idPrefix ) {
 
   this.workoutClock = new PPClock();
   this.workoutClock.setCountDown(20);
@@ -32,12 +29,14 @@ function PPTabataClock(displayElementID, startButtonID, stopButtonID ) {
 
   this.sound = new Audio('sound/short1.wav');
 
+  var timerBinder = new PPTimerBinder(idPrefix);
+  timerBinder.setDelegate(this);
   
-  var initBinder = function() { that.init(); }
-  PPUtils.bind("load", window, initBinder );
 }
 
+// The power of prototyping … don't extend, just grab what you need.
 PPTabataClock.prototype.init = PPClock.prototype.init;
+PPTabataClock.prototype.setDisplayElement = PPClock.prototype.setDisplayElement;
 
 PPTabataClock.prototype.start = function () {
    this.currentClock.start();
