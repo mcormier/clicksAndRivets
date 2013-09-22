@@ -12,7 +12,7 @@ function PPClock( idPrefix) {
   this.countDownClock = false;
 
   var that = this;
-  this.runAction = function() {  that.updateClock(); }
+  this.runAction = function() {  that.updateClock(); };
 
   if (idPrefix != undefined) {
   
@@ -27,21 +27,21 @@ PPClock.prototype.init = function () {
     if ( this.countDownClock ) {
       this.displayElement.innerHTML = PPClock.format(this.countDownAmount);
     }
-}
+};
 
 PPClock.prototype.setDisplayElement = function (element) {
   this.displayElement = element;
-}
+};
 
 PPClock.prototype.setCountDown = function (amount) {
   this.countDownClock = true;
   this.countDownAmount = amount;
-}
+};
 
 
 PPClock.prototype.setTimeLimit = function (timeLimit) {
   PPUtils.log("TODO - implement setTimeLimit");
-}
+};
 
 PPClock.prototype.start = function () {
    if ( this.running ) {
@@ -54,7 +54,7 @@ PPClock.prototype.start = function () {
    var toRun = this.runAction;
    this.id = window.setInterval( toRun , 1000 );
    this.running = true;
-}
+};
 
 
 PPClock.prototype.stop = function () {
@@ -91,7 +91,7 @@ PPClock.prototype.updateClock = function() {
      this.stop();
    }
    
-}
+};
 
 
 // PPClock Static methods
@@ -110,4 +110,4 @@ PPClock.format = function (secondsValue) {
   } else {
     return seconds;
   }
-}
+};
