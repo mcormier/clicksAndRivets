@@ -11,10 +11,10 @@
   <script>
 
     // TODO -- rename from clock to timer's these are timer's not clocks...
-    // TODO -- maybe a binder object for binding stuff. TimerBinder
 
-    // TODO -- countdown clock - with 10 second countdown start
-    // TODO -- 10 second startup delay
+    // TODO -- implement time limit
+    // TODO -- allow sound customization
+    // TODO -- emotm and Tabata can be composites?
 
     var timer = new PPClock( "up" );
     
@@ -33,10 +33,8 @@
     countDown.setCountDown(10);
     var countUp = new PPClock();
     countUp.setTimeLimit(600);
-    var countUpWith10SecCountdown = new PPCompositeTimer(countDown, null);
- 
-    var timerBinder = new PPTimerBinder("countUp");
- 
+    var countUpWith10SecCountdown = new PPCompositeTimer("countUp", countDown, countUp);
+
   </script>
 
 
