@@ -67,7 +67,7 @@ PPClock.prototype.stop = function () {
        PPUtils.log("Can't stop, not running");
     }
 
-}
+};
 
 
 PPClock.prototype.currentValue = function() {
@@ -80,7 +80,7 @@ PPClock.prototype.currentValue = function() {
   }
   
   return seconds;
-}
+};
 
 PPClock.prototype.updateClock = function() {
    var seconds = this.currentValue();
