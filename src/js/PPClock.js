@@ -76,7 +76,7 @@ PPClock.prototype.stop = function () {
 PPClock.prototype.done = function () {
   this.stop();
   if (this.delegate ) { this.delegate.done(this); }
-}
+};
 
 
 PPClock.prototype.currentValue = function() {
