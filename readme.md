@@ -12,4 +12,6 @@ I was not impressed with the free javascript workout timers that I found online 
 - http://www.elated.com/articles/creating-a-javascript-clock/
 - https://itunes.apple.com/us/app/tabata-timer/id311712265?mt=8
 - http://tabatatraining.org/
+- http://www.online-stopwatch.com/interval-timer/
+- https://www.google.ca/search?q=timer+for+10+seconds&cad=h
 
