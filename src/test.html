@@ -3,35 +3,33 @@
 <head>
   <script src="js/PPUtils.js"></script>
   <script src="js/PPTimerBinder.js"></script>
-  <script src="js/PPClock.js"></script>
-  <script src="js/PPTabataClock.js"></script>
-  <script src="js/PPEMOTMClock.js"></script>
+  <script src="js/PPTimer.js"></script>
+  <script src="js/PPTabataTimer.js"></script>
+  <script src="js/PPEMOTMTimer.js"></script>
   <script src="js/PPCompositeTimer.js"></script>
   
   <script>
-
-    // TODO -- rename from clock to timer's these are timer's not clocks...
 
     // TODO -- implement time limit
     // TODO -- allow sound customization
     // TODO -- emotm and Tabata can be composites?
 
-    var timer = new PPClock( "up" );
+    var timer = new PPTimer( "up" );
     
-    // Tests that a clock can be constructed that is not bound to any HTML elements
-    var timerEmptyConstructorTest = new PPClock();
+    // Tests that a timer can be constructed that is not bound to any HTML elements
+    var timerEmptyConstructorTest = new PPTimer();
     
-    var countDownClock = new PPClock("countDown");
-    countDownClock.setCountDown(600);
+    var countDownTimer = new PPTimer("countDown");
+    countDownTimer.setCountDown(600);
 
-    var tabataClock = new PPTabataClock( "tabata" );
-    var emotmClock = new PPEmotmClock("emotm");
+    var tabataTimer = new PPTabataTimer( "tabata" );
+    var emotmTimer = new PPEmotmTimer("emotm");
 
 
     // Create a 10 minute workout with a 10 second count down start
-    var countDown = new PPClock();
+    var countDown = new PPTimer();
     countDown.setCountDown(10);
-    var countUp = new PPClock();
+    var countUp = new PPTimer();
     countUp.setTimeLimit(600);
     var countUpWith10SecCountdown = new PPCompositeTimer("countUp", countDown, countUp);
 
@@ -40,25 +38,25 @@
 
 </head>
 <body>
-     Count up clock <div id="upDisplay">&nbsp;</div>
+     Count up timer <div id="upDisplay">&nbsp;</div>
      <input id="upStart" type="button" value="Start"/>
      <input id="upStop" type="button" value="Stop"/>
 
 
-     <br><br>Count down clock <div id="countDownDisplay">&nbsp;</div>
+     <br><br>Count down timer <div id="countDownDisplay">&nbsp;</div>
      <input id="countDownStart" type="button" value="Start"/>
      <input id="countDownStop" type="button" value="Stop"/>
      
-     <br><br>Tabata clock (8 rounds, Exercise 20 seconds, rest 10 seconds)
+     <br><br>Tabata timer (8 rounds, Exercise 20 seconds, rest 10 seconds)
       <div id="tabataDisplay">&nbsp;</div>
      <input id="tabataStart" type="button" value="Start"/>
      <input id="tabataStop" type="button" value="Stop"/>
      
-     <br><br>EMOTM (Beeps every minute on the minute) clock <div id="emotmDisplay">&nbsp;</div>
+     <br><br>EMOTM (Beeps every minute on the minute) timer <div id="emotmDisplay">&nbsp;</div>
      <input id="emotmStart" type="button" value="Start"/>
      <input id="emotmStop" type="button" value="Stop"/>
      
-     <br><br>Count up clock with 10 second countdown start
+     <br><br>Count up timer with 10 second countdown start
      <div id="countUpDisplay">&nbsp;</div>
      <input id="countUpStart" type="button" value="Start"/>
      <input id="countUpStop" type="button" value="Stop"/>
