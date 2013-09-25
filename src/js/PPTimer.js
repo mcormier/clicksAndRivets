@@ -30,7 +30,7 @@ PPTimer.prototype.init = function () {
 };
 
 
-// Delegate methods are: start, stop, done, valueChanged
+// Delegate methods are: done, valueChanged
 PPTimer.prototype.setDelegate = function(delegate) {
   this.delegate = delegate;
 };

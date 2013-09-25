@@ -35,5 +35,6 @@ PPCompositeTimer.prototype.done = function (timer) {
 
   if ( timer == this.startTimer ) {
     this.mainTimer.start();
+    this.currentTimer = this.mainTimer;
   }
 };
