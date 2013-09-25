@@ -44,7 +44,7 @@ PPTimer.prototype.setCountDown = function (amount) {
 
 
 PPTimer.prototype.setTimeLimit = function (timeLimit) {
-  PPUtils.log("TODO - implement setTimeLimit");
+  this.timeLimit = timeLimit;
 };
 
 PPTimer.prototype.start = function () {
@@ -99,7 +99,11 @@ PPTimer.prototype.update = function() {
    if ( this.countDownTimer && seconds == 0 ) {
      this.done();
    }
-   
+
+  if ( !this.countDownTimer && seconds >= this.timeLimit ) {
+     this.done();
+  }
+
 };
 
 

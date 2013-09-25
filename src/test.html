@@ -30,8 +30,10 @@
     var countDown = new PPTimer();
     countDown.setCountDown(10);
     var countUp = new PPTimer();
-    countUp.setTimeLimit(600);
+    countUp.setTimeLimit(20);
     var countUpWith10SecCountdown = new PPCompositeTimer("countUp", countDown, countUp);
+
+
 
   </script>
 
@@ -60,6 +62,8 @@
      <div id="countUpDisplay">&nbsp;</div>
      <input id="countUpStart" type="button" value="Start"/>
      <input id="countUpStop" type="button" value="Stop"/>
+
+
      
 </body>
 </html>
