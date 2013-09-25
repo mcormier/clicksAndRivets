@@ -29,7 +29,7 @@ PPCompositeTimer.prototype.stop = function () {
 };
 
 PPCompositeTimer.prototype.done = function (timer) {
-  PPUtils.log("Done");
+
   if ( timer == this.startTimer ) {
     this.mainTimer.start();
   }
