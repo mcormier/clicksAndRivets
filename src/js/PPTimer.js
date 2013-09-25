@@ -29,6 +29,8 @@ PPTimer.prototype.init = function () {
     }
 };
 
+
+// Delegate methods are: start, stop, done, valueChanged
 PPTimer.prototype.setDelegate = function(delegate) {
   this.delegate = delegate;
 };
@@ -96,6 +98,10 @@ PPTimer.prototype.update = function() {
 
    this.displayElement.innerHTML = PPTimer.format(seconds);
 
+   if ( PPUtils.objectImplementsMethod( this.delegate, "valueChanged") ) {
+     this.delegate.valueChanged(seconds);
+   }
+
    if ( this.countDownTimer && seconds == 0 ) {
      this.done();
    }
@@ -124,3 +130,29 @@ PPTimer.format = function (secondsValue) {
     return seconds;
   }
 };
+
+function TimerFactory() {}
+
+//
+// Creates an Every Minute on the minute timer that beeps every minute.
+//
+TimerFactory.createEMOTMTimer = function(idPrefix) {
+
+
+  var countDown = new PPTimer();
+  countDown.setCountDown(10);
+  var countUp = new PPTimer();
+  var emotmTimer = new PPCompositeTimer(idPrefix, countDown, countUp);
+
+  emotmTimer.sound = new Audio('sound/short1.wav');
+
+  emotmTimer.valueChanged = function (currValue) {
+    if ( currValue % 60 == 0 ) {
+      emotmTimer.sound.play();
+    }
+  };
+
+  return emotmTimer;
+};
+
+

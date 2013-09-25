@@ -5,13 +5,12 @@
   <script src="js/PPTimerBinder.js"></script>
   <script src="js/PPTimer.js"></script>
   <script src="js/PPTabataTimer.js"></script>
-  <script src="js/PPEMOTMTimer.js"></script>
   <script src="js/PPCompositeTimer.js"></script>
   
   <script>
 
     // TODO -- allow sound customization
-    // TODO -- emotm and Tabata can be composites?
+    // TODO -- Tabata can be a composite?
 
     var timer = new PPTimer( "up" );
     
@@ -22,7 +21,7 @@
     countDownTimer.setCountDown(600);
 
     var tabataTimer = new PPTabataTimer( "tabata" );
-    var emotmTimer = new PPEmotmTimer("emotm");
+    var emotmTimer = TimerFactory.createEMOTMTimer("emotm" );
 
 
     // Create a 10 minute workout with a 10 second count down start
@@ -31,8 +30,6 @@
     var countUp = new PPTimer();
     countUp.setTimeLimit(20);
     var countUpWith10SecCountdown = new PPCompositeTimer("countUp", countDown, countUp);
-
-
 
   </script>
 

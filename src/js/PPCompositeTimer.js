@@ -7,7 +7,10 @@ function PPCompositeTimer(idPrefix, startTimer, mainTimer) {
   this.startTimer = startTimer;
   this.startTimer.setDelegate(this);
   this.mainTimer = mainTimer;
+  this.mainTimer.setDelegate(this);
+
   this.currentTimer = this.startTimer;
+
 
   var timerBinder = new PPTimerBinder(idPrefix);
   timerBinder.setDelegate(this);
