@@ -1,6 +1,6 @@
 
 // A meta-timer composed of two Timers
-// Usually one is short countdown timer,
+// Usually one is a short countdown timer,
 // i.e. 10 second countdown before starting a 20 minute
 //      workout
 function PPCompositeTimer(idPrefix, startTimer, mainTimer) {
@@ -33,6 +33,7 @@ PPCompositeTimer.prototype.stop = function () {
 
 PPCompositeTimer.prototype.done = function (timer) {
 
+  PPUtils.log("composites done");
   if ( timer == this.startTimer ) {
     this.mainTimer.start();
     this.currentTimer = this.mainTimer;

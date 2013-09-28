@@ -155,4 +155,48 @@ TimerFactory.createEMOTMTimer = function(idPrefix) {
   return emotmTimer;
 };
 
+/*
+ Default Settings:
+ ----------------------------------
+ Total cycles = 8
+   Rest = 10 seconds
+   Duration = 20 seconds
+
+ The rest clock goes first so that it can act as a countdown clock,
+ when starting a tabata interval.
+ */
+TimerFactory.createTabataTimer = function(idPrefix) {
+    var workoutTimer = new PPTimer();
+    workoutTimer.setCountDown(20);
+    var restTimer = new PPTimer();
+    restTimer.setCountDown(10);
+
+    var tabataTimer = new PPCompositeTimer(idPrefix, restTimer, workoutTimer);
+
+    tabataTimer.sound = new Audio('sound/short1.wav');
+    tabataTimer.currentRound = 1;
+    tabataTimer.rounds = 8;
+
+    // bypass the composite timer's done function to switch between
+    // timers until all rounds are complete.
+    tabataTimer.done = function (timer) {
+        tabataTimer.sound.play();
+
+        if ( tabataTimer.currentRound > tabataTimer.rounds ) {
+            return;
+        }
+
+        if ( timer == tabataTimer.startTimer ) {
+            tabataTimer.currentTimer = tabataTimer.mainTimer;
+        } else {
+            tabataTimer.currentTimer = tabataTimer.startTimer;
+            tabataTimer.currentRound = tabataTimer.currentRound + 1;
+        }
+
+        tabataTimer.currentTimer.start();
+    };
+
+    return tabataTimer;
+};
+
 
