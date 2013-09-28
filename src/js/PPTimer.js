@@ -1,6 +1,5 @@
-
 // ------------------------------------------------------------------------------------
-// The clock can either be bound to html elements or not bound
+// The timer can either be bound to html elements or not bound
 //
 // new PPTimer( "idPrefix" );
 //
