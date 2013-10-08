@@ -12,8 +12,8 @@ function PPCompositeTimer(idPrefix, startTimer, mainTimer) {
   this.currentTimer = this.startTimer;
 
 
-  var timerBinder = new PPTimerBinder(idPrefix);
-  timerBinder.setDelegate(this);
+  this.timerBinder = new PPTimerBinder(idPrefix);
+  this.timerBinder.setDelegate(this);
 }
 
 PPCompositeTimer.prototype.setDisplayElement = function (element) {
@@ -33,7 +33,6 @@ PPCompositeTimer.prototype.stop = function () {
 
 PPCompositeTimer.prototype.done = function (timer) {
 
-  PPUtils.log("composites done");
   if ( timer == this.startTimer ) {
     this.mainTimer.start();
     this.currentTimer = this.mainTimer;

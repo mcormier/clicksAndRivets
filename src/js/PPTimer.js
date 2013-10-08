@@ -143,12 +143,12 @@ TimerFactory.createEMOTMTimer = function(idPrefix) {
   var countUp = new PPTimer();
   var emotmTimer = new PPCompositeTimer(idPrefix, countDown, countUp);
 
-  emotmTimer.sound = new Audio('sound/short1.wav');
-
   emotmTimer.valueChanged = function (currValue) {
     if ( currValue % 60 == 0 ) {
-      emotmTimer.sound.play();
+        emotmTimer.timerBinder.sound.load();
+        emotmTimer.timerBinder.sound.play();
     }
+
   };
 
   return emotmTimer;

@@ -9,8 +9,11 @@
 function PPTimerBinder(idPrefix) {
   this.displayElementID = idPrefix + "Display";
   this.startButtonID = idPrefix + "Start";
-  this.stopButtonID = idPrefix + "Stop";
-  
+  this.soundID = idPrefix + "Sound";
+
+  this.soundLoaded = false;
+
+  this.started = false;
   this.isBound = false;
   
   var that = this;
@@ -20,12 +23,10 @@ function PPTimerBinder(idPrefix) {
 
 PPTimerBinder.prototype.init = function () {
   this.displayElement = $(this.displayElementID);
-  
+
   var that = this;
-  var startBinder = function() {  that.start(); };
-  var stopBinder = function() {  that.stop(); };
-  PPUtils.bind("click", $(this.startButtonID), startBinder );
-  PPUtils.bind("click", $(this.stopButtonID), stopBinder );
+  var buttonBinder = function() {  that.buttonAction(); };
+  PPUtils.bind("click", $(this.startButtonID), buttonBinder );
   
   if ( this.delegate ) {
     this.delegate.setDisplayElement(that.displayElement);
@@ -33,17 +34,29 @@ PPTimerBinder.prototype.init = function () {
   this.isBound = true;
 };
 
-PPTimerBinder.prototype.start = function () {
-  if ( this.delegate ) { 
+PPTimerBinder.prototype.buttonAction = function () {
+
+    if ( this.soundLoaded == false ) {
+        this.sound = $(this.soundID);
+        this.sound.load();
+        this.soundLoaded = true;
+    }
+
+  if ( this.delegate && this.started == false ) {
     this.delegate.start();
+    $(this.startButtonID).value ="Stop";
+    this.started = true;
+    return;
   }
+
+  if ( this.delegate && this.started == true ) {
+      this.delegate.stop();
+      $(this.startButtonID).value = "Start";
+      this.started = false;
+  }
+
 };
 
-PPTimerBinder.prototype.stop = function () { 
-  if ( this.delegate ) {
-    this.delegate.stop();
-  }
-};
 
 PPTimerBinder.prototype.setDelegate = function (delegate) {
   this.delegate = delegate;

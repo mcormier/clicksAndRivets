@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="js/PPUtils.js"></script>
+  <script src="js/PPTimerBinder.js"></script>
+  <script src="js/PPTimer.js"></script>
+  <script src="js/PPCompositeTimer.js"></script>
+
+
+
+  <script>
+
+
+    var emotmTimer = TimerFactory.createEMOTMTimer("emotm" );
+
+
+  </script>
+
+  <style>
+
+     #emotmDisplay { font-size: 48pt; }
+
+     #emotmStart  { font-size: 24pt; }
+
+  </style>
+
+
+</head>
+<body>
+
+<div style="text-align: center;">
+    <div id="emotmDisplay">&nbsp;</div>
+    <input id="emotmStart" type="button" value="Start"/>
+    <audio id="emotmSound" src="sound/short1.wav" ></audio>
+</div>
+
+
+     
+</body>
+</html>
