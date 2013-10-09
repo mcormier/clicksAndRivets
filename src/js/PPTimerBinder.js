@@ -32,19 +32,19 @@ PPTimerBinder.prototype.init = function () {
     this.delegate.setDisplayElement(that.displayElement);
   }
   this.isBound = true;
+  this.sound = $(this.soundID);
 };
 
 PPTimerBinder.prototype.buttonAction = function () {
 
     if ( this.soundLoaded == false ) {
-        this.sound = $(this.soundID);
         this.sound.load();
         this.soundLoaded = true;
     }
 
   if ( this.delegate && this.started == false ) {
     this.delegate.start();
-    $(this.startButtonID).value ="Stop";
+    $(this.startButtonID).value = "Stop";
     this.started = true;
     return;
   }
@@ -63,4 +63,10 @@ PPTimerBinder.prototype.setDelegate = function (delegate) {
   if ( this.isBound ) {
     this.delegate.setDisplayElement(this.displayElement);
   }
+};
+
+PPTimerBinder.prototype.play = function () {
+    this.sound.currentTime=0;
+    this.sound.load();
+    this.sound.play();
 };
