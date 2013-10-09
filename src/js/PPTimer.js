@@ -145,8 +145,7 @@ TimerFactory.createEMOTMTimer = function(idPrefix) {
 
   emotmTimer.valueChanged = function (currValue) {
     if ( currValue % 60 == 0 ) {
-        emotmTimer.timerBinder.sound.load();
-        emotmTimer.timerBinder.sound.play();
+        emotmTimer.play();
     }
 
   };
@@ -172,14 +171,13 @@ TimerFactory.createTabataTimer = function(idPrefix) {
 
     var tabataTimer = new PPCompositeTimer(idPrefix, restTimer, workoutTimer);
 
-    tabataTimer.sound = new Audio('sound/short1.wav');
     tabataTimer.currentRound = 1;
     tabataTimer.rounds = 8;
 
     // bypass the composite timer's done function to switch between
     // timers until all rounds are complete.
     tabataTimer.done = function (timer) {
-        tabataTimer.sound.play();
+        tabataTimer.play();
 
         if ( tabataTimer.currentRound > tabataTimer.rounds ) {
             return;
