@@ -8,8 +8,6 @@
   
   <script>
 
-    // TODO -- allow sound customization
-
     var timer = new PPTimer( "up" );
     
     // Tests that a timer can be constructed that is not bound to any HTML elements
@@ -36,25 +34,25 @@
 <body>
      Count up timer <div id="upDisplay">&nbsp;</div>
      <input id="upStart" type="button" value="Start"/>
-     <audio id="upSound" src="sound/short1.wav" loop ></audio>
+     <audio id="upSound" src="sound/short1.wav" preload="auto" ></audio>
 
      <br><br>Count down timer <div id="countDownDisplay">&nbsp;</div>
      <input id="countDownStart" type="button" value="Start"/>
-     <audio id="countDownSound" src="sound/short1.wav" loop ></audio>
+     <audio id="countDownSound" src="sound/short1.wav" preload="auto" ></audio>
 
      <br><br>Tabata timer (8 rounds, Exercise 20 seconds, rest 10 seconds)
       <div id="tabataDisplay">&nbsp;</div>
      <input id="tabataStart" type="button" value="Start"/>
-     <audio id="tabataSound" src="sound/short1.wav" loop ></audio>
+     <audio id="tabataSound" src="sound/short1.wav" preload="auto" ></audio>
 
      <br><br>EMOTM (Beeps every minute on the minute) timer <div id="emotmDisplay">&nbsp;</div>
      <input id="emotmStart" type="button" value="Start"/>
-     <audio id="emotmSound" src="sound/short1.wav" loop ></audio>
+     <audio id="emotmSound" src="sound/short1.wav" preload="auto" ></audio>
 
      <br><br>Count up timer with 10 second countdown start
      <div id="countUpDisplay">&nbsp;</div>
      <input id="countUpStart" type="button" value="Start"/>
-     <audio id="countUpSound" src="sound/short1.wav" loop ></audio>
+     <audio id="countUpSound" src="sound/short1.wav" preload="auto" ></audio>
 
      
 </body>
