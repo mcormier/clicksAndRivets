@@ -31,6 +31,10 @@ PPCompositeTimer.prototype.stop = function () {
   this.currentTimer.stop();
 };
 
+PPCompositeTimer.prototype.play = function () {
+    this.timerBinder.play();
+};
+
 PPCompositeTimer.prototype.done = function (timer) {
 
   if ( timer == this.startTimer ) {
