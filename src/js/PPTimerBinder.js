@@ -4,14 +4,10 @@
 //
 //   idPrefix + "Display"
 //   idPrefix + "Start"
-//   idPrefix + "Stop"
 //
 function PPTimerBinder(idPrefix) {
   this.displayElementID = idPrefix + "Display";
   this.startButtonID = idPrefix + "Start";
-  this.soundID = idPrefix + "Sound";
-
-  this.soundLoaded = false;
 
   this.started = false;
   this.isBound = false;
@@ -32,15 +28,21 @@ PPTimerBinder.prototype.init = function () {
     this.delegate.setDisplayElement(that.displayElement);
   }
   this.isBound = true;
-  this.sound = $(this.soundID);
+
+  // http://codebase.es/riffwave/
+  // create random sound with riffwave.js  TODO -- create custom sounds dynamically
+  var data = []; // just an array
+  for (var i=0; i<10000; i++) data[i] = Math.round(255 * Math.random());
+  var wave = new RIFFWAVE(data); // create the wave file
+  this.audio = new Audio(wave.dataURI); // create the HTML5 audio element
+
+
 };
 
 PPTimerBinder.prototype.buttonAction = function () {
 
-    if ( this.soundLoaded == false ) {
-        this.sound.load();
-        this.soundLoaded = true;
-    }
+  // play because of user action in ios
+  this.play();
 
   if ( this.delegate && this.started == false ) {
     this.delegate.start();
@@ -66,7 +68,6 @@ PPTimerBinder.prototype.setDelegate = function (delegate) {
 };
 
 PPTimerBinder.prototype.play = function () {
-    this.sound.currentTime=0;
-    this.sound.load();
-    this.sound.play();
+    this.audio.currentTime=0;
+    this.audio.play();
 };
