@@ -9,6 +9,8 @@
   
   <script>
 
+    // TODO -- prevent iPad from sleeping?
+
     var timer = new PPTimer( "up" );
     
     // Tests that a timer can be constructed that is not bound to any HTML elements
@@ -33,22 +35,29 @@
 
 </head>
 <body>
+
      Count up timer <div id="upDisplay">&nbsp;</div>
-     <input id="upStart" type="button" value="Start"/>
+     <input id="upButton" type="button" value="Start"/>
+     <audio id="upSound" preload="auto"><source src="sound/short1.wav"/></audio>
 
      <br><br>Count down timer <div id="countDownDisplay">&nbsp;</div>
-     <input id="countDownStart" type="button" value="Start"/>
+     <input id="countDownButton" type="button" value="Start"/>
+     <audio id="countDownSound" preload="auto"><source src="sound/short1.wav"/></audio>
 
      <br><br>Tabata timer (8 rounds, Exercise 20 seconds, rest 10 seconds)
       <div id="tabataDisplay">&nbsp;</div>
-     <input id="tabataStart" type="button" value="Start"/>
+     <input id="tabataButton" type="button" value="Start"/>
+     <audio id="tabataSound" preload="auto"><source src="sound/short1.wav"/></audio>
 
-     <br><br>EMOTM (Beeps every minute on the minute) timer <div id="emotmDisplay">&nbsp;</div>
-     <input id="emotmStart" type="button" value="Start"/>
+     <br><br>EMOTM (Beeps every minute on the minute) timer
+     <div id="emotmDisplay">&nbsp;</div>
+     <input id="emotmButton" type="button" value="Start"/>
+     <audio id="emotmSound" preload="auto"><source src="sound/short1.wav"/></audio>
 
      <br><br>Count up timer with 10 second countdown start
      <div id="countUpDisplay">&nbsp;</div>
-     <input id="countUpStart" type="button" value="Start"/>
+     <input id="countUpButton" type="button" value="Start"/>
+     <audio id="countUpSound" preload="auto"><source src="sound/short1.wav"/></audio>
 
      
 </body>

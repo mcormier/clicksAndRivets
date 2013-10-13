@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+  <script src="clicksandrivets-min.js"></script>
+  
+  <script>
+    var emotmTimer = TimerFactory.createEMOTMTimer("emotm" );
+  </script>
+
+
+
+   <style>
+
+
+       body { background: black; }
+
+       .timerDisplay {
+         font-family: normal, normal 'digital-7regular', Helvetica, Arial,serif;
+         color: white;
+         font-size: 84pt;
+         /*background:red; */
+         text-align: center;
+       }
+
+       .buttonWrapper {
+           text-align:center;
+       }
+
+       .buttonWrapper input {
+         width:100px;
+         height: 100px;
+         -webkit-border-radius: 50px;
+         -moz-border-radius: 50px;
+         border-radius: 50px;
+         background-color:black;
+         border:3px solid #00ff00;
+         font-size:20pt;
+         color:#00ff00;
+       }
+
+   </style>
+
+</head>
+<body>
+     
+     <div id="emotmDisplay" class="timerDisplay" >10</div>
+     <div class="buttonWrapper">
+       <input id="emotmButton" type="button" value="Start"/>
+     </div>
+     <audio id="emotmSound" preload="auto">
+         <source src="sound/short1.wav"/>
+     </audio>
+
+
+     
+</body>
+</html>

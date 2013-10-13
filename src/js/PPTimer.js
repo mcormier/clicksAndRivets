@@ -145,7 +145,7 @@ TimerFactory.createEMOTMTimer = function(idPrefix) {
 
   emotmTimer.valueChanged = function (currValue) {
     if ( currValue % 60 == 0 ) {
-        emotmTimer.play();
+        emotmTimer.sound.play();
     }
 
   };
@@ -177,7 +177,7 @@ TimerFactory.createTabataTimer = function(idPrefix) {
     // bypass the composite timer's done function to switch between
     // timers until all rounds are complete.
     tabataTimer.done = function (timer) {
-        tabataTimer.play();
+        tabataTimer.sound.play();
 
         if ( tabataTimer.currentRound > tabataTimer.rounds ) {
             return;
