@@ -9,3 +9,31 @@
     font-style: normal;
 
 }
+
+/* TODO - create a custom font with just numbers in it.
+   TODO - change spacing of the number 1 so that that it looks like an old LED */
+
+body { background: black; }
+
+.timerDisplay {
+    font-family: normal, normal 'digital-7regular', Helvetica, Arial,serif;
+    color: white;
+    font-size: 84pt;
+    text-align: center;
+}
+
+.buttonWrapper {
+    text-align:center;
+}
+
+.buttonWrapper input {
+    width:100px;
+    height: 100px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    background-color:black;
+    border:3px solid #00ff00;
+    font-size:20pt;
+    color:#00ff00;
+}
