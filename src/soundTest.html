@@ -7,11 +7,9 @@
 
     <script>
         var staticSound = PPSound.generateStaticSound();
-
-        function playStatic() {
-          staticSound.play();
-        }
-
+        var sineSound = PPSound.sineSound();
+        var stereoTest = PPSound.stereoTest();
+        var aliens = PPSound.alienSpaceShip();
     </script>
 
 
@@ -19,7 +17,10 @@
 <body>
 
 
-<input type="button" value="Static" onClick="playStatic();"/>
+<input type="button" value="Static" onClick="staticSound.play();"/><BR>
+<input type="button" value="Sine" onClick=" sineSound.play();"/><BR>
+<input type="button" value="StereoTest" onClick="stereoTest.play();"/><BR>
+<input type="button" value="Alien Spaceship" onClick="aliens.play();"/><BR>
 
 
 
