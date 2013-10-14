@@ -3,6 +3,7 @@
 <head>
   <script src="js/PPUtils.js"></script>
   <script src="js/riffwave.js"></script>
+  <script src="js/PPSound.js"></script>
   <script src="js/PPTimerBinder.js"></script>
   <script src="js/PPTimer.js"></script>
   <script src="js/PPCompositeTimer.js"></script>
@@ -18,6 +19,8 @@
     
     var countDownTimer = new PPTimer("countDown");
     countDownTimer.setCountDown(600);
+
+    var tabataGenSoundTimer = TimerFactory.createTabataTimer("tabataGenSound");
 
     var tabataTimer = TimerFactory.createTabataTimer("tabata");
     var emotmTimer = TimerFactory.createEMOTMTimer("emotm" );
@@ -36,7 +39,11 @@
 </head>
 <body>
 
-     Count up timer <div id="upDisplay">&nbsp;</div>
+    <br><br>Tabata Generated Sound
+    <div id="tabataGenSoundDisplay">&nbsp;</div>
+    <input id="tabataGenSoundButton" type="button" value="Start"/>
+
+     <br><br>Count up timer <div id="upDisplay">&nbsp;</div>
      <input id="upButton" type="button" value="Start"/>
      <audio id="upSound" preload="auto"><source src="sound/short1.wav"/></audio>
 

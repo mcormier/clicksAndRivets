@@ -22,6 +22,10 @@ PPTimerBinder.prototype.init = function () {
   this.displayElement = $(this.displayElementID);
   this.sound = $(this.soundId);
 
+  if (!this.sound) {
+    this.sound = PPSound.generateStaticSound();
+  }
+
   var that = this;
   var buttonBinder = function() {  that.buttonAction(); };
   PPUtils.bind("click", $(this.buttonID), buttonBinder );
@@ -31,13 +35,6 @@ PPTimerBinder.prototype.init = function () {
   }
   this.isBound = true;
 
-  // TODO -- if Sound not specified in HTML then create one dynamically.
-  // http://codebase.es/riffwave/
-  // create random sound with riffwave.js
-  //var data = []; // just an array
-  //for (var i=0; i<10000; i++) data[i] = Math.round(255 * Math.random());
-  //var wave = new RIFFWAVE(data); // create the wave file
-  //this.audio = new Audio(wave.dataURI); // create the HTML5 audio element
 
 
 };
