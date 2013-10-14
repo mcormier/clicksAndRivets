@@ -11,7 +11,6 @@ function PPTimerBinder(idPrefix) {
   this.soundId = idPrefix + "Sound";
 
   this.isBound = false;
-  this.started = false;
   this.timerRunning = false;
 
   var that = this;
